@@ -60,7 +60,7 @@
             this.btnCodeRequest.Location = new System.Drawing.Point(159, 72);
             this.btnCodeRequest.Name = "btnCodeRequest";
             this.btnCodeRequest.Size = new System.Drawing.Size(94, 23);
-            this.btnCodeRequest.TabIndex = 2;
+            this.btnCodeRequest.TabIndex = 6;
             this.btnCodeRequest.Text = "Request code";
             this.btnCodeRequest.UseVisualStyleBackColor = true;
             this.btnCodeRequest.Click += new System.EventHandler(this.btnCodeRequest_Click);
@@ -96,7 +96,7 @@
             this.radVoice.Location = new System.Drawing.Point(63, 75);
             this.radVoice.Name = "radVoice";
             this.radVoice.Size = new System.Drawing.Size(52, 17);
-            this.radVoice.TabIndex = 5;
+            this.radVoice.TabIndex = 3;
             this.radVoice.Text = "Voice";
             this.radVoice.UseVisualStyleBackColor = true;
             // 
@@ -107,7 +107,7 @@
             this.radSMS.Location = new System.Drawing.Point(9, 75);
             this.radSMS.Name = "radSMS";
             this.radSMS.Size = new System.Drawing.Size(48, 17);
-            this.radSMS.TabIndex = 4;
+            this.radSMS.TabIndex = 3;
             this.radSMS.TabStop = true;
             this.radSMS.Text = "SMS";
             this.radSMS.UseVisualStyleBackColor = true;
@@ -178,7 +178,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(142, 20);
-            this.txtPassword.TabIndex = 6;
+            this.txtPassword.TabIndex = 2;
             // 
             // label3
             // 
