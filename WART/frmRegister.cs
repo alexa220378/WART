@@ -63,6 +63,10 @@ namespace WART
                         this.grpStep2.Enabled = true;
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Could not request verification code");
+                }
             }
         }
 
@@ -75,6 +79,10 @@ namespace WART
                 if (!String.IsNullOrEmpty(this.password))
                 {
                     this.OnReceivePassword();
+                }
+                else
+                {
+                    MessageBox.Show("Verification code not accepted");
                 }
             }
         }
