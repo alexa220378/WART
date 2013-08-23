@@ -40,6 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.grpResult = new System.Windows.Forms.GroupBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.grpStep1.SuspendLayout();
             this.grpStep2.SuspendLayout();
             this.grpResult.SuspendLayout();
@@ -47,14 +49,14 @@
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(88, 19);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(111, 19);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(165, 20);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(142, 20);
             this.txtPhoneNumber.TabIndex = 1;
             // 
             // btnCodeRequest
             // 
-            this.btnCodeRequest.Location = new System.Drawing.Point(159, 45);
+            this.btnCodeRequest.Location = new System.Drawing.Point(159, 72);
             this.btnCodeRequest.Name = "btnCodeRequest";
             this.btnCodeRequest.Size = new System.Drawing.Size(94, 23);
             this.btnCodeRequest.TabIndex = 2;
@@ -73,6 +75,8 @@
             // 
             // grpStep1
             // 
+            this.grpStep1.Controls.Add(this.label3);
+            this.grpStep1.Controls.Add(this.txtPassword);
             this.grpStep1.Controls.Add(this.radVoice);
             this.grpStep1.Controls.Add(this.radSMS);
             this.grpStep1.Controls.Add(this.label2);
@@ -80,7 +84,7 @@
             this.grpStep1.Controls.Add(this.txtPhoneNumber);
             this.grpStep1.Location = new System.Drawing.Point(13, 13);
             this.grpStep1.Name = "grpStep1";
-            this.grpStep1.Size = new System.Drawing.Size(259, 76);
+            this.grpStep1.Size = new System.Drawing.Size(259, 104);
             this.grpStep1.TabIndex = 4;
             this.grpStep1.TabStop = false;
             this.grpStep1.Text = "Step 1: Request code";
@@ -88,7 +92,7 @@
             // radVoice
             // 
             this.radVoice.AutoSize = true;
-            this.radVoice.Location = new System.Drawing.Point(64, 50);
+            this.radVoice.Location = new System.Drawing.Point(63, 75);
             this.radVoice.Name = "radVoice";
             this.radVoice.Size = new System.Drawing.Size(52, 17);
             this.radVoice.TabIndex = 5;
@@ -99,7 +103,7 @@
             // 
             this.radSMS.AutoSize = true;
             this.radSMS.Checked = true;
-            this.radSMS.Location = new System.Drawing.Point(9, 50);
+            this.radSMS.Location = new System.Drawing.Point(9, 75);
             this.radSMS.Name = "radSMS";
             this.radSMS.Size = new System.Drawing.Size(48, 17);
             this.radSMS.TabIndex = 4;
@@ -113,7 +117,7 @@
             this.grpStep2.Controls.Add(this.txtCode);
             this.grpStep2.Controls.Add(this.label1);
             this.grpStep2.Enabled = false;
-            this.grpStep2.Location = new System.Drawing.Point(13, 96);
+            this.grpStep2.Location = new System.Drawing.Point(12, 123);
             this.grpStep2.Name = "grpStep2";
             this.grpStep2.Size = new System.Drawing.Size(259, 50);
             this.grpStep2.TabIndex = 5;
@@ -160,18 +164,35 @@
             // 
             this.grpResult.Controls.Add(this.txtOutput);
             this.grpResult.Enabled = false;
-            this.grpResult.Location = new System.Drawing.Point(13, 153);
+            this.grpResult.Location = new System.Drawing.Point(13, 179);
             this.grpResult.Name = "grpResult";
             this.grpResult.Size = new System.Drawing.Size(259, 134);
             this.grpResult.TabIndex = 7;
             this.grpResult.TabStop = false;
             this.grpResult.Text = "Step 3: Retrieve password";
             // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(111, 46);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(142, 20);
+            this.txtPassword.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 49);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Password (optional)";
+            // 
             // frmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 300);
+            this.ClientSize = new System.Drawing.Size(284, 323);
             this.Controls.Add(this.grpResult);
             this.Controls.Add(this.grpStep2);
             this.Controls.Add(this.grpStep1);
@@ -201,5 +222,7 @@
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox grpResult;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtPassword;
     }
 }
