@@ -11,6 +11,7 @@ namespace WART
 {
     public partial class frmRegister : Form
     {
+        protected string identity;
         protected string number;
         protected string cc;
         protected string phone;
@@ -36,6 +37,7 @@ namespace WART
                 try
                 {
                     WhatsAppApi.Parser.PhoneNumber phonenumber = new WhatsAppApi.Parser.PhoneNumber(this.txtPhoneNumber.Text);
+                    this.identity = WhatsAppApi.Register.WhatsRegisterV2.GenerateIdentity(phonenumber.Number, this.txtPassword.Text);
                     this.number = phonenumber.FullNumber;
                     this.cc = phonenumber.CC;
                     this.phone = phonenumber.Number;
@@ -48,7 +50,7 @@ namespace WART
                     this.txtOutput.Text = String.Format("Error: {0}", ex.Message);
                     return;
                 }
-                if (WhatsAppApi.Register.WhatsRegisterV2.RequestCode(this.cc, this.phone, out this.password, method, null, this.language, this.locale, this.mcc))
+                if (WhatsAppApi.Register.WhatsRegisterV2.RequestCode(this.cc, this.phone, out this.password, method, this.identity, this.language, this.locale, this.mcc))
                 {
                     if (!string.IsNullOrEmpty(this.password))
                     {
@@ -69,7 +71,7 @@ namespace WART
             if (!String.IsNullOrEmpty(this.txtCode.Text) && this.txtCode.Text.Length == 6)
             {
                 string code = this.txtCode.Text;
-                this.password = WhatsAppApi.Register.WhatsRegisterV2.RegisterCode(this.cc, this.phone, code);
+                this.password = WhatsAppApi.Register.WhatsRegisterV2.RegisterCode(this.cc, this.phone, code, this.identity);
                 if (!String.IsNullOrEmpty(this.password))
                 {
                     this.OnReceivePassword();
