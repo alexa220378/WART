@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegister));
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.btnCodeRequest = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -196,6 +197,7 @@
             this.Controls.Add(this.grpResult);
             this.Controls.Add(this.grpStep2);
             this.Controls.Add(this.grpStep1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRegister";
             this.Text = "WhatsApp Registration";
             this.grpStep1.ResumeLayout(false);
