@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WhatsAppReg")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("WART")]
+[assembly: AssemblyDescription("WhatsApp Registration Tool")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WhatsAppReg")]
+[assembly: AssemblyCompany("shirioko")]
+[assembly: AssemblyProduct("WART")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
