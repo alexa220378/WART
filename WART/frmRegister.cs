@@ -50,7 +50,8 @@ namespace WART
                     this.txtOutput.Text = String.Format("Error: {0}", ex.Message);
                     return;
                 }
-                if (WhatsAppApi.Register.WhatsRegisterV2.RequestCode(this.cc, this.phone, out this.password, method, this.identity, this.language, this.locale, this.mcc))
+                string response = null;
+                if (WhatsAppApi.Register.WhatsRegisterV2.RequestCode(this.cc, this.phone, out this.password, out response, method, this.identity, this.language, this.locale, this.mcc))
                 {
                     if (!string.IsNullOrEmpty(this.password))
                     {
@@ -65,7 +66,7 @@ namespace WART
                 }
                 else
                 {
-                    MessageBox.Show("Could not request verification code");
+                    MessageBox.Show(string.Format("Could not request verification code\r\n{0}", response));
                 }
             }
         }
