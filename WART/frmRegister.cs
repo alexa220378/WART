@@ -19,10 +19,24 @@ namespace WART
         protected string language;
         protected string locale;
         protected string mcc;
+        protected ToolTip tt;
 
         public frmRegister()
         {
             InitializeComponent();
+            this.AddToolTips();
+        } 
+
+        private void AddToolTips()
+        {
+            this.tt = new ToolTip();
+            this.tt.AutoPopDelay = 5000;
+            this.tt.InitialDelay = 0;
+            this.tt.ReshowDelay = 0;
+            this.tt.ShowAlways = true;
+            this.tt.SetToolTip(this.txtPassword, "Optional personal password. Using your own personal password will greatly increase security.");
+            this.tt.SetToolTip(this.txtPhoneNumber, "Your phone number including country code (no leading + or 0)");
+            this.tt.SetToolTip(this.txtCode, "6-digit verifiction code you received by SMS or voice call");
         }
 
         private void btnCodeRequest_Click(object sender, EventArgs e)
