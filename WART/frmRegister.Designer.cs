@@ -33,6 +33,8 @@
             this.btnCodeRequest = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.grpStep1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.radVoice = new System.Windows.Forms.RadioButton();
             this.radSMS = new System.Windows.Forms.RadioButton();
             this.grpStep2 = new System.Windows.Forms.GroupBox();
@@ -41,8 +43,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.grpResult = new System.Windows.Forms.GroupBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.grpStep1.SuspendLayout();
             this.grpStep2.SuspendLayout();
             this.grpResult.SuspendLayout();
@@ -89,6 +89,23 @@
             this.grpStep1.TabIndex = 4;
             this.grpStep1.TabStop = false;
             this.grpStep1.Text = "Step 1: Request code";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 49);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Password (optional)";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(111, 46);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(142, 20);
+            this.txtPassword.TabIndex = 2;
             // 
             // radVoice
             // 
@@ -172,23 +189,6 @@
             this.grpResult.TabStop = false;
             this.grpResult.Text = "Step 3: Retrieve password";
             // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(111, 46);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(142, 20);
-            this.txtPassword.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 49);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Password (optional)";
-            // 
             // frmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -200,6 +200,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRegister";
             this.Text = "WhatsApp Registration";
+            this.Load += new System.EventHandler(this.frmRegister_Load);
             this.grpStep1.ResumeLayout(false);
             this.grpStep1.PerformLayout();
             this.grpStep2.ResumeLayout(false);

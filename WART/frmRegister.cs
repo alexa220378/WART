@@ -24,7 +24,6 @@ namespace WART
         public frmRegister()
         {
             InitializeComponent();
-            this.AddToolTips();
         } 
 
         private void AddToolTips()
@@ -108,6 +107,11 @@ namespace WART
             this.grpStep1.Enabled = false;
             this.grpStep2.Enabled = false;
             this.grpResult.Enabled = true;
+        }
+
+        private void frmRegister_Load(object sender, EventArgs e)
+        {
+            this.AddToolTips();
         }
     }
 }
