@@ -113,5 +113,15 @@ namespace WART
         {
             this.AddToolTips();
         }
+
+        private void onMouseEnter(object sender, EventArgs e)
+        {
+            this.tt.Active = true;
+        }
+
+        private void onMouseLeave(object sender, EventArgs e)
+        {
+            this.tt.Active = false;
+        }
     }
 }

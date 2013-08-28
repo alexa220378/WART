@@ -54,6 +54,8 @@
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(142, 20);
             this.txtPhoneNumber.TabIndex = 1;
+            this.txtPhoneNumber.MouseEnter += new System.EventHandler(this.onMouseEnter);
+            this.txtPhoneNumber.MouseLeave += new System.EventHandler(this.onMouseLeave);
             // 
             // btnCodeRequest
             // 
@@ -106,6 +108,8 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(142, 20);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.MouseEnter += new System.EventHandler(this.onMouseEnter);
+            this.txtPassword.MouseLeave += new System.EventHandler(this.onMouseLeave);
             // 
             // radVoice
             // 
@@ -159,6 +163,8 @@
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(65, 20);
             this.txtCode.TabIndex = 1;
+            this.txtCode.MouseEnter += new System.EventHandler(this.onMouseEnter);
+            this.txtCode.MouseLeave += new System.EventHandler(this.onMouseLeave);
             // 
             // label1
             // 
