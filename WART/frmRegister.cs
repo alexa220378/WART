@@ -36,6 +36,8 @@ namespace WART
             this.tt.SetToolTip(this.txtPassword, "Optional personal password. Using your own personal password will greatly increase security.");
             this.tt.SetToolTip(this.txtPhoneNumber, "Your phone number including country code (no leading + or 0)");
             this.tt.SetToolTip(this.txtCode, "6-digit verifiction code you received by SMS or voice call");
+            this.tt.SetToolTip(this.radSMS, "You will receive an SMS with the 6-digit verification code");
+            this.tt.SetToolTip(this.radVoice, "You will receive a voice call which will tell you your 6-digit verification code");
         }
 
         private void btnCodeRequest_Click(object sender, EventArgs e)

@@ -120,6 +120,8 @@
             this.radVoice.TabIndex = 3;
             this.radVoice.Text = "Voice";
             this.radVoice.UseVisualStyleBackColor = true;
+            this.radVoice.MouseEnter += new System.EventHandler(this.onMouseEnter);
+            this.radVoice.MouseLeave += new System.EventHandler(this.onMouseLeave);
             // 
             // radSMS
             // 
@@ -132,6 +134,8 @@
             this.radSMS.TabStop = true;
             this.radSMS.Text = "SMS";
             this.radSMS.UseVisualStyleBackColor = true;
+            this.radSMS.MouseEnter += new System.EventHandler(this.onMouseEnter);
+            this.radSMS.MouseLeave += new System.EventHandler(this.onMouseLeave);
             // 
             // grpStep2
             // 
