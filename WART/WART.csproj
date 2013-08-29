@@ -69,6 +69,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode\CountryEntry.cs" />
+    <Compile Include="AppCode\CountryHelper.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="frmRegister.cs">
       <SubType>Form</SubType>
@@ -91,6 +93,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="AppCode\countries.tsv" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
