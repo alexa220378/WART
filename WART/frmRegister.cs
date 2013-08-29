@@ -71,7 +71,7 @@ namespace WART
                 }
                 catch (Exception ex)
                 {
-                    this.txtOutput.Text = String.Format("Error: {0}", ex.Message);
+                    MessageBox.Show(String.Format("Error: {0}", ex.Message));
                     return;
                 }
                 string response = null;
