@@ -63,6 +63,16 @@ namespace WART.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] countries {
+            get {
+                object obj = ResourceManager.GetObject("countries", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] WhatsAppApi {
             get {
                 object obj = ResourceManager.GetObject("WhatsAppApi", resourceCulture);
