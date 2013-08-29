@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WART.AppCode;
 
 namespace WART
 {
@@ -59,6 +60,14 @@ namespace WART
                     this.language = phonenumber.ISO639;
                     this.locale = phonenumber.ISO3166;
                     this.mcc = phonenumber.MCC;
+
+                    CountryHelper chelp = new CountryHelper();
+                    string country = string.Empty;
+                    if (!chelp.CheckFormat(this.cc, this.phone, out country))
+                    {
+                        MessageBox.Show(string.Format("Provided number does not match any known patterns for {0}", country));
+                        return;
+                    }
                 }
                 catch (Exception ex)
                 {
