@@ -55,6 +55,7 @@
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(132, 20);
             this.txtPhoneNumber.TabIndex = 1;
+            this.txtPhoneNumber.TextChanged += new System.EventHandler(this.txtPhoneNumber_TextChanged);
             this.txtPhoneNumber.MouseEnter += new System.EventHandler(this.onMouseEnter);
             this.txtPhoneNumber.MouseLeave += new System.EventHandler(this.onMouseLeave);
             // 
@@ -205,6 +206,7 @@
             // 
             // btnID
             // 
+            this.btnID.Enabled = false;
             this.btnID.Location = new System.Drawing.Point(121, 72);
             this.btnID.Name = "btnID";
             this.btnID.Size = new System.Drawing.Size(30, 23);

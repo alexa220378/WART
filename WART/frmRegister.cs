@@ -155,12 +155,25 @@ namespace WART
                 {
                     WhatsAppApi.Parser.PhoneNumber phonenumber = new WhatsAppApi.Parser.PhoneNumber(this.txtPhoneNumber.Text);
                     this.identity = WhatsAppApi.Register.WhatsRegisterV2.GenerateIdentity(phonenumber.Number, this.txtPassword.Text);
-                    this.txtOutput.Text = String.Format("Your identity is:\r\n{0}", this.identity);
+                    this.txtOutput.Text = String.Format("Your identity is copied to clipboard:\r\n{0}", this.identity);
+                    Clipboard.SetText(this.identity);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(this.txtPhoneNumber.Text))
+            {
+                this.btnID.Enabled = true;
+            }
+            else
+            {
+                this.btnID.Enabled = false;
             }
         }
     }
