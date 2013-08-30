@@ -134,5 +134,17 @@ namespace WART
         {
             this.tt.Active = false;
         }
+
+        private void txtCode_TextChanged(object sender, EventArgs e)
+        {
+            if (this.txtCode.Text.Length == 6)
+            {
+                this.btnRegisterCode.Enabled = true;
+            }
+            else
+            {
+                this.btnRegisterCode.Enabled = false;
+            }
+        }
     }
 }

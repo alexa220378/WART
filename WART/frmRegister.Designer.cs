@@ -152,6 +152,7 @@
             // 
             // btnRegisterCode
             // 
+            this.btnRegisterCode.Enabled = false;
             this.btnRegisterCode.Location = new System.Drawing.Point(159, 17);
             this.btnRegisterCode.Name = "btnRegisterCode";
             this.btnRegisterCode.Size = new System.Drawing.Size(94, 23);
@@ -167,6 +168,7 @@
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(65, 20);
             this.txtCode.TabIndex = 1;
+            this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
             this.txtCode.MouseEnter += new System.EventHandler(this.onMouseEnter);
             this.txtCode.MouseLeave += new System.EventHandler(this.onMouseLeave);
             // 
