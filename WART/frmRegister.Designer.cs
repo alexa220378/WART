@@ -43,6 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.grpResult = new System.Windows.Forms.GroupBox();
+            this.btnID = new System.Windows.Forms.Button();
             this.grpStep1.SuspendLayout();
             this.grpStep2.SuspendLayout();
             this.grpResult.SuspendLayout();
@@ -50,9 +51,9 @@
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(111, 19);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(121, 19);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(142, 20);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(132, 20);
             this.txtPhoneNumber.TabIndex = 1;
             this.txtPhoneNumber.MouseEnter += new System.EventHandler(this.onMouseEnter);
             this.txtPhoneNumber.MouseLeave += new System.EventHandler(this.onMouseLeave);
@@ -78,6 +79,7 @@
             // 
             // grpStep1
             // 
+            this.grpStep1.Controls.Add(this.btnID);
             this.grpStep1.Controls.Add(this.label3);
             this.grpStep1.Controls.Add(this.txtPassword);
             this.grpStep1.Controls.Add(this.radVoice);
@@ -103,10 +105,10 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(111, 46);
+            this.txtPassword.Location = new System.Drawing.Point(121, 46);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(142, 20);
+            this.txtPassword.Size = new System.Drawing.Size(132, 20);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.MouseEnter += new System.EventHandler(this.onMouseEnter);
             this.txtPassword.MouseLeave += new System.EventHandler(this.onMouseLeave);
@@ -201,6 +203,16 @@
             this.grpResult.TabStop = false;
             this.grpResult.Text = "Step 3: Retrieve password";
             // 
+            // btnID
+            // 
+            this.btnID.Location = new System.Drawing.Point(121, 72);
+            this.btnID.Name = "btnID";
+            this.btnID.Size = new System.Drawing.Size(30, 23);
+            this.btnID.TabIndex = 8;
+            this.btnID.Text = "ID";
+            this.btnID.UseVisualStyleBackColor = true;
+            this.btnID.Click += new System.EventHandler(this.btnID_Click);
+            // 
             // frmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,5 +251,6 @@
         private System.Windows.Forms.GroupBox grpResult;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Button btnID;
     }
 }

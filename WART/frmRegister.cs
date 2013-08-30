@@ -146,5 +146,22 @@ namespace WART
                 this.btnRegisterCode.Enabled = false;
             }
         }
+
+        private void btnID_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(this.txtPhoneNumber.Text))
+            {
+                try
+                {
+                    WhatsAppApi.Parser.PhoneNumber phonenumber = new WhatsAppApi.Parser.PhoneNumber(this.txtPhoneNumber.Text);
+                    this.identity = WhatsAppApi.Register.WhatsRegisterV2.GenerateIdentity(phonenumber.Number, this.txtPassword.Text);
+                    this.txtOutput.Text = String.Format("Your identity is:\r\n{0}", this.identity);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
     }
 }
