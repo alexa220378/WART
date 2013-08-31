@@ -239,6 +239,7 @@ namespace WART
             Console.WriteLine("Usage: WART.exe [method] [args (key=value)]");
             Console.WriteLine();
             Console.WriteLine("Methods:");
+            Console.WriteLine("\tui --- Forces WART to run as UI instead of CLI");
             Console.WriteLine("\tid number password --- Generates and prints identity");
             Console.WriteLine("\trequest number password method --- Requests registration code or gets password");
             Console.WriteLine("\tregister number password code --- Registers a number");

@@ -22,7 +22,12 @@ namespace WART
         [STAThread]
         static void Main()
         {
-            UseUI = !Attach();
+            bool forceUI = CheckForceUI();
+
+            if (!forceUI)
+            {
+                UseUI = !Attach();
+            }
 
             if (UseUI)
             {
@@ -34,6 +39,16 @@ namespace WART
 
             //exit
             System.Windows.Forms.SendKeys.SendWait("{ENTER}");
+        }
+
+        private static bool CheckForceUI()
+        {
+            string[] args = Environment.GetCommandLineArgs();
+            if (args.Length >= 2 && args[1] == "ui")
+            {
+                return true;
+            }
+            return false;
         }
 
         static bool Attach()
