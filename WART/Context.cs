@@ -15,7 +15,15 @@ namespace WART
 
         public void Run()
         {
-            Application.Run(new frmRegister());
+            frmRegister regform = new frmRegister();
+            if (Program.UseUI)
+            {
+                Application.Run(new frmRegister());
+            }
+            else
+            {
+                regform.RunAsCli();
+            }
         }
 
         System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)

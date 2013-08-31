@@ -201,5 +201,10 @@ namespace WART
                 this.btnID.Enabled = false;
             }
         }
+
+        internal void RunAsCli()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
