@@ -8,6 +8,12 @@ namespace WART
 {
     static class Program
     {
+        [System.Runtime.InteropServices.DllImport("kernel32.dll")]
+        private static extern bool AllocConsole();
+
+        [System.Runtime.InteropServices.DllImport("kernel32.dll")]
+        private static extern bool AttachConsole(int pid);
+
         public static bool UseUI = true;
 
         /// <summary>
@@ -16,7 +22,7 @@ namespace WART
         [STAThread]
         static void Main()
         {
-            UseUI = !IsConsole();
+            UseUI = !Attach();
 
             if (UseUI)
             {
@@ -27,16 +33,9 @@ namespace WART
             c.Run();
         }
 
-        static bool IsConsole()
+        static bool Attach()
         {
-            try
-            {
-                int foo = Console.WindowHeight;
-                return true;
-            }
-            catch (Exception)
-            { }
-            return false;
+            return AttachConsole(-1);
         }
     }
 }
