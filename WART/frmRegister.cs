@@ -236,7 +236,7 @@ namespace WART
         private void CliPrintHelp()
         {
             //print help
-            Console.WriteLine("Usage: WART-CLI.exe [method] [args (key=value)]");
+            Console.WriteLine("Usage: WART.exe [method] [args (key=value)]");
             Console.WriteLine();
             Console.WriteLine("Methods:");
             Console.WriteLine("\tid number password --- Generates and prints identity");
@@ -250,9 +250,9 @@ namespace WART
             Console.WriteLine("\tmethod (optional) --- Method for code delivery by either sms or voice");
             Console.WriteLine();
             Console.WriteLine("Examples:");
-            Console.WriteLine("\tWART-CLI.exe id number=1234567890 password=secret");
-            Console.WriteLine("\tWART-CLI.exe request number=1234567890 password=secret method=sms");
-            Console.WriteLine("\tWART-CLI.exe register number=1234567890 password=secret code=000000");
+            Console.WriteLine("\tWART.exe id number=1234567890 password=secret");
+            Console.WriteLine("\tWART.exe request number=1234567890 password=secret method=sms");
+            Console.WriteLine("\tWART.exe register number=1234567890 password=secret code=000000");
         }
 
         private void CliRegisterCode()
