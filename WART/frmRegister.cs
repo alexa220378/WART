@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 using WART.AppCode;
@@ -21,10 +22,24 @@ namespace WART
         protected string locale;
         protected string mcc;
         protected ToolTip tt;
+        const string WA_CERT_THUMBPRINT = "AC4C5FDEAEDD00406AC33C58BAFD6DE6D2424FEE";
 
         public frmRegister()
         {
             InitializeComponent();
+            ServicePointManager.ServerCertificateValidationCallback += CustomCertificateValidation;
+        }
+
+        private bool CustomCertificateValidation(object sender, System.Security.Cryptography.X509Certificates.X509Certificate certificate, System.Security.Cryptography.X509Certificates.X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
+        {
+            if (certificate.GetCertHashString() == WA_CERT_THUMBPRINT)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         } 
 
         private void AddToolTips()
