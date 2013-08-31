@@ -21,6 +21,8 @@ namespace WART
         protected string language;
         protected string locale;
         protected string mcc;
+        protected string code;
+        public  string method = "sms";
         protected ToolTip tt;
         const string WA_CERT_THUMBPRINT = "AC4C5FDEAEDD00406AC33C58BAFD6DE6D2424FEE";
 
@@ -60,10 +62,9 @@ namespace WART
         {
             if (!String.IsNullOrEmpty(this.txtPhoneNumber.Text))
             {
-                string method = "sms";
                 if (this.radVoice.Checked)
                 {
-                    method = "voice";
+                    this.method = "voice";
                 }
                 try
                 {
@@ -92,7 +93,7 @@ namespace WART
                     return;
                 }
                 string response = null;
-                if (WhatsAppApi.Register.WhatsRegisterV2.RequestCode(this.cc, this.phone, out this.password, out response, method, this.identity, this.language, this.locale, this.mcc))
+                if (WhatsAppApi.Register.WhatsRegisterV2.RequestCode(this.cc, this.phone, out this.password, out response, this.method, this.identity, this.language, this.locale, this.mcc))
                 {
                     if (!string.IsNullOrEmpty(this.password))
                     {
@@ -117,8 +118,8 @@ namespace WART
         {
             if (!String.IsNullOrEmpty(this.txtCode.Text) && this.txtCode.Text.Length == 6)
             {
-                string code = this.txtCode.Text;
-                this.password = WhatsAppApi.Register.WhatsRegisterV2.RegisterCode(this.cc, this.phone, code, this.identity);
+                this.code = this.txtCode.Text;
+                this.password = WhatsAppApi.Register.WhatsRegisterV2.RegisterCode(this.cc, this.phone, this.code, this.identity);
                 if (!String.IsNullOrEmpty(this.password))
                 {
                     this.OnReceivePassword();
@@ -202,9 +203,176 @@ namespace WART
             }
         }
 
-        internal void RunAsCli()
+        /*
+         * command line mode:
+         */
+
+        public void RunAsCli()
         {
-            throw new NotImplementedException();
+            string[] args = Environment.GetCommandLineArgs();
+            string option = string.Empty;
+            if (args.Length >= 2)
+            {
+                option = args[1];
+            }
+            switch (option)
+            {
+                case "id":
+                    this.CliGenerateId();
+                    break;
+                case "request":
+                    this.CliRequestCode();
+                    break;
+                case "register":
+                    this.CliRegisterCode();
+                    break;
+                default:
+                    //show tip
+                    this.CliPrintHelp();
+                    break;
+            }
+        }
+
+        private void CliPrintHelp()
+        {
+            //print help
+            Console.WriteLine("Usage: WART-CLI.exe [method] [args (key=value)]");
+            Console.WriteLine();
+            Console.WriteLine("Methods:");
+            Console.WriteLine("\tid number password --- Generates and prints identity");
+            Console.WriteLine("\trequest number password method --- Requests registration code or gets password");
+            Console.WriteLine("\tregister number password code --- Registers a number");
+            Console.WriteLine();
+            Console.WriteLine("Args:");
+            Console.WriteLine("\tnumber --- Phone number incl. country code");
+            Console.WriteLine("\tpassword (optional) --- Optional personal password for generation identity");
+            Console.WriteLine("\tcode --- 6-digit registration code you received from whatsapp");
+            Console.WriteLine("\tmethod (optional) --- Method for code delivery by either sms or voice");
+            Console.WriteLine();
+            Console.WriteLine("Examples:");
+            Console.WriteLine("\tWART-CLI.exe id number=1234567890 password=secret");
+            Console.WriteLine("\tWART-CLI.exe request number=1234567890 password=secret method=sms");
+            Console.WriteLine("\tWART-CLI.exe register number=1234567890 password=secret code=000000");
+        }
+
+        private void CliRegisterCode()
+        {
+            this.GetArgs();
+            try
+            {
+                WhatsAppApi.Parser.PhoneNumber pn = new WhatsAppApi.Parser.PhoneNumber(this.number);
+                this.identity = WhatsAppApi.Register.WhatsRegisterV2.GenerateIdentity(pn.Number, password);
+                CountryHelper ch = new CountryHelper();
+                string country = string.Empty;
+                if (ch.CheckFormat(pn.CC, pn.Number, out country))
+                {
+                    this.password = WhatsAppApi.Register.WhatsRegisterV2.RegisterCode(pn.CC, pn.Number, this.code, null, this.password);
+                    if (String.IsNullOrEmpty(this.password))
+                    {
+                        Console.WriteLine("Code not accepted");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Got password:");
+                        Console.WriteLine(this.password);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(String.Format("Invalid number for {0}", country));
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
+        private void CliRequestCode()
+        {
+            this.GetArgs();
+            try
+            {
+                WhatsAppApi.Parser.PhoneNumber pn = new WhatsAppApi.Parser.PhoneNumber(this.number);
+                this.identity = WhatsAppApi.Register.WhatsRegisterV2.GenerateIdentity(pn.Number, this.password);
+                CountryHelper ch = new CountryHelper();
+                string country = string.Empty;
+                string response = string.Empty;
+                if (ch.CheckFormat(pn.CC, pn.Number, out country))
+                {
+                    if (WhatsAppApi.Register.WhatsRegisterV2.RequestCode(pn.CC, pn.Number, out this.password, out response, this.method, pn.ISO639, pn.ISO3166, pn.MCC, this.password))
+                    {
+                        if (!string.IsNullOrEmpty(this.password))
+                        {
+                            Console.WriteLine("Got password:");
+                            Console.WriteLine(this.password);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Code requested");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error:");
+                        Console.WriteLine(response);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(string.Format("Invalid phone number for {0}", country));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        private void CliGenerateId()
+        {
+            this.GetArgs();
+            try
+            {
+                WhatsAppApi.Parser.PhoneNumber pn = new WhatsAppApi.Parser.PhoneNumber(this.number);
+                this.identity = WhatsAppApi.Register.WhatsRegisterV2.GenerateIdentity(pn.Number, this.password);
+                Console.WriteLine("Identity:");
+                Console.WriteLine(identity);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        private void GetArgs()
+        {
+ 	        foreach(string arg in Environment.GetCommandLineArgs())
+            {
+                if(arg.Contains('='))
+                {
+                    string[] parts = arg.Split(new char[] { '=' } );
+                    try
+                    {
+                        switch (parts[0])
+                        {
+                            case "number":
+                                this.number = parts[1];
+                                break;
+                            case "password":
+                                this.password = parts[1];
+                                break;
+                            case "method":
+                                this.method = parts[1];
+                                break;
+                            case "code":
+                                this.code = parts[1];
+                                break;
+                        }
+                    }
+                    catch (Exception) { }
+                }
+            }
         }
     }
 }
