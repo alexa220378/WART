@@ -65,13 +65,15 @@ namespace WART
                     string country = string.Empty;
                     if (!chelp.CheckFormat(this.cc, this.phone, out country))
                     {
-                        MessageBox.Show(string.Format("Provided number does not match any known patterns for {0}", country));
+                        string msg = string.Format("Provided number does not match any known patterns for {0}", country);
+                        this.Notify(msg);
                         return;
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(String.Format("Error: {0}", ex.Message));
+                    string msg = String.Format("Error: {0}", ex.Message);
+                    this.Notify(msg);
                     return;
                 }
                 string response = null;
@@ -90,7 +92,8 @@ namespace WART
                 }
                 else
                 {
-                    MessageBox.Show(string.Format("Could not request verification code\r\n{0}", response));
+                    string msg = string.Format("Could not request verification code\r\n{0}", response);
+                    this.Notify(msg);
                 }
             }
         }
@@ -107,9 +110,16 @@ namespace WART
                 }
                 else
                 {
-                    MessageBox.Show("Verification code not accepted");
+                    string msg = "Verification code not accepted";
+                    this.Notify(msg);
                 }
             }
+        }
+
+        private void Notify(string msg)
+        {
+            this.txtOutput.Text = msg;
+            MessageBox.Show(msg);
         }
 
         private void OnReceivePassword()
