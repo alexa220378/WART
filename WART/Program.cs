@@ -31,6 +31,9 @@ namespace WART
             }
             Context c = new Context();
             c.Run();
+
+            //exit
+            System.Windows.Forms.SendKeys.SendWait("{ENTER}");
         }
 
         static bool Attach()
