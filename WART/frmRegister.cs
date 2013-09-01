@@ -68,9 +68,10 @@ namespace WART
                 }
                 try
                 {
-                    WhatsAppApi.Parser.PhoneNumber phonenumber = new WhatsAppApi.Parser.PhoneNumber(this.txtPhoneNumber.Text);
+                    this.number = this.txtPhoneNumber.Text;
+                    this.TrimNumber();
+                    WhatsAppApi.Parser.PhoneNumber phonenumber = new WhatsAppApi.Parser.PhoneNumber(this.number);
                     this.identity = WhatsAppApi.Register.WhatsRegisterV2.GenerateIdentity(phonenumber.Number, this.txtPassword.Text);
-                    this.number = phonenumber.FullNumber;
                     this.cc = phonenumber.CC;
                     this.phone = phonenumber.Number;
                     this.language = phonenumber.ISO639;
@@ -203,6 +204,11 @@ namespace WART
             }
         }
 
+        protected void TrimNumber()
+        {
+            this.number = this.number.TrimStart(new char[] { '+', '0' });
+        }
+
         /*
          * command line mode:
          */
@@ -259,6 +265,7 @@ namespace WART
         private void CliRegisterCode()
         {
             this.GetArgs();
+            this.TrimNumber();
             try
             {
                 WhatsAppApi.Parser.PhoneNumber pn = new WhatsAppApi.Parser.PhoneNumber(this.number);
@@ -285,13 +292,14 @@ namespace WART
             }
             catch (Exception e)
             {
-
+                Console.WriteLine(String.Format("Error: {0}", e.Message));
             }
         }
 
         private void CliRequestCode()
         {
             this.GetArgs();
+            this.TrimNumber();
             try
             {
                 WhatsAppApi.Parser.PhoneNumber pn = new WhatsAppApi.Parser.PhoneNumber(this.number);
@@ -301,7 +309,7 @@ namespace WART
                 string response = string.Empty;
                 if (ch.CheckFormat(pn.CC, pn.Number, out country))
                 {
-                    if (WhatsAppApi.Register.WhatsRegisterV2.RequestCode(pn.CC, pn.Number, out this.password, out response, this.method, pn.ISO639, pn.ISO3166, pn.MCC, this.password))
+                    if (WhatsAppApi.Register.WhatsRegisterV2.RequestCode(pn.CC, pn.Number, out this.password, out response, this.method, null, pn.ISO639, pn.ISO3166, pn.MCC, this.password))
                     {
                         if (!string.IsNullOrEmpty(this.password))
                         {
@@ -333,6 +341,7 @@ namespace WART
         private void CliGenerateId()
         {
             this.GetArgs();
+            this.TrimNumber();
             try
             {
                 WhatsAppApi.Parser.PhoneNumber pn = new WhatsAppApi.Parser.PhoneNumber(this.number);
