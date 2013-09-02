@@ -120,7 +120,8 @@ namespace WART
             if (!String.IsNullOrEmpty(this.txtCode.Text) && this.txtCode.Text.Length == 6)
             {
                 this.code = this.txtCode.Text;
-                this.password = WhatsAppApi.Register.WhatsRegisterV2.RegisterCode(this.cc, this.phone, this.code, this.identity);
+                string response = string.Empty;
+                this.password = WhatsAppApi.Register.WhatsRegisterV2.RegisterCode(this.cc, this.phone, this.code, out response, this.identity);
                 if (!String.IsNullOrEmpty(this.password))
                 {
                     this.OnReceivePassword();
@@ -274,7 +275,8 @@ namespace WART
                 string country = string.Empty;
                 if (ch.CheckFormat(pn.CC, pn.Number, out country))
                 {
-                    this.password = WhatsAppApi.Register.WhatsRegisterV2.RegisterCode(pn.CC, pn.Number, this.code, null, this.password);
+                    string response = string.Empty;
+                    this.password = WhatsAppApi.Register.WhatsRegisterV2.RegisterCode(pn.CC, pn.Number, this.code, out response, null, this.password);
                     if (String.IsNullOrEmpty(this.password))
                     {
                         Console.WriteLine("Code not accepted");
