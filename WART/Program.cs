@@ -37,8 +37,11 @@ namespace WART
             Context c = new Context();
             c.Run();
 
-            //exit
-            System.Windows.Forms.SendKeys.SendWait("{ENTER}");
+            if (!UseUI)
+            {
+                //exit
+                System.Windows.Forms.SendKeys.SendWait("{ENTER}");
+            }
         }
 
         private static bool HasConsoleArgs()
