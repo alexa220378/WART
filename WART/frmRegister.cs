@@ -22,6 +22,7 @@ namespace WART
         protected string locale;
         protected string mcc;
         protected string code;
+        protected bool raw = false;
         public  string method = "sms";
         protected ToolTip tt;
         const string WA_CERT_THUMBPRINT = "AC4C5FDEAEDD00406AC33C58BAFD6DE6D2424FEE";
@@ -255,7 +256,8 @@ namespace WART
             Console.WriteLine("\tnumber --- Phone number incl. country code");
             Console.WriteLine("\tpassword (optional) --- Optional personal password for generation identity");
             Console.WriteLine("\tcode --- 6-digit registration code you received from whatsapp");
-            Console.WriteLine("\tmethod (optional) --- Method for code delivery by either sms or voice");
+            Console.WriteLine("\tmethod (optional) --- Method for code delivery (sms/voice)");
+            Console.WriteLine("\traw (optional) --- Return raw server response (true/false)");
             Console.WriteLine();
             Console.WriteLine("Examples:");
             Console.WriteLine("\tWART.exe id number=1234567890 password=secret");
@@ -379,6 +381,12 @@ namespace WART
                                 break;
                             case "code":
                                 this.code = parts[1];
+                                break;
+                            case "raw":
+                                if (parts[1] == "true")
+                                {
+                                    this.raw = true;
+                                }
                                 break;
                         }
                     }
