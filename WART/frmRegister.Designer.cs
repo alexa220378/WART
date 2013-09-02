@@ -33,6 +33,7 @@
             this.btnCodeRequest = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.grpStep1 = new System.Windows.Forms.GroupBox();
+            this.btnID = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.radVoice = new System.Windows.Forms.RadioButton();
@@ -43,7 +44,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.grpResult = new System.Windows.Forms.GroupBox();
-            this.btnID = new System.Windows.Forms.Button();
             this.grpStep1.SuspendLayout();
             this.grpStep2.SuspendLayout();
             this.grpResult.SuspendLayout();
@@ -94,6 +94,19 @@
             this.grpStep1.TabIndex = 4;
             this.grpStep1.TabStop = false;
             this.grpStep1.Text = "Step 1: Request code";
+            // 
+            // btnID
+            // 
+            this.btnID.Enabled = false;
+            this.btnID.Location = new System.Drawing.Point(121, 72);
+            this.btnID.Name = "btnID";
+            this.btnID.Size = new System.Drawing.Size(30, 23);
+            this.btnID.TabIndex = 8;
+            this.btnID.Text = "ID";
+            this.btnID.UseVisualStyleBackColor = true;
+            this.btnID.Click += new System.EventHandler(this.btnID_Click);
+            this.btnID.MouseEnter += new System.EventHandler(this.onMouseEnter);
+            this.btnID.MouseLeave += new System.EventHandler(this.onMouseLeave);
             // 
             // label3
             // 
@@ -203,17 +216,6 @@
             this.grpResult.TabIndex = 7;
             this.grpResult.TabStop = false;
             this.grpResult.Text = "Step 3: Retrieve password";
-            // 
-            // btnID
-            // 
-            this.btnID.Enabled = false;
-            this.btnID.Location = new System.Drawing.Point(121, 72);
-            this.btnID.Name = "btnID";
-            this.btnID.Size = new System.Drawing.Size(30, 23);
-            this.btnID.TabIndex = 8;
-            this.btnID.Text = "ID";
-            this.btnID.UseVisualStyleBackColor = true;
-            this.btnID.Click += new System.EventHandler(this.btnID_Click);
             // 
             // frmRegister
             // 

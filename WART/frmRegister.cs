@@ -57,6 +57,7 @@ namespace WART
             this.tt.SetToolTip(this.txtCode, "6-digit verifiction code you received by SMS or voice call");
             this.tt.SetToolTip(this.radSMS, "You will receive an SMS with the 6-digit verification code");
             this.tt.SetToolTip(this.radVoice, "You will receive a voice call which will tell you your 6-digit verification code");
+            this.tt.SetToolTip(this.btnID, "Generate ID by number and password and copy it to clipboard");
         }
 
         private void btnCodeRequest_Click(object sender, EventArgs e)
