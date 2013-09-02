@@ -53,7 +53,13 @@ namespace WART
 
         static bool Attach()
         {
-            return AttachConsole(-1);
+            try
+            {
+                return AttachConsole(-1);
+            }
+            catch (Exception)
+            { }
+            return false;
         }
     }
 }
