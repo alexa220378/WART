@@ -26,19 +26,41 @@ namespace WART
 
             if (!forceUI)
             {
-                UseUI = !Attach();
+                UseUI = !Attach() && !IsConsole() && !HasConsoleArgs();
             }
 
             if (UseUI)
             {
                 Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
+                //Application.SetCompatibleTextRenderingDefault(false);
             }
             Context c = new Context();
             c.Run();
 
             //exit
             System.Windows.Forms.SendKeys.SendWait("{ENTER}");
+        }
+
+        private static bool HasConsoleArgs()
+        {
+            string[] args = Environment.GetCommandLineArgs();
+            if (args.Length >= 2 && args[1] != "ui")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private static bool IsConsole()
+        {
+            try
+            {
+                int foo = Console.WindowHeight;
+                return true;
+            }
+            catch (Exception)
+            { }
+            return false;
         }
 
         private static bool CheckForceUI()
