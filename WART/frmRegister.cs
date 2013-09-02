@@ -279,6 +279,14 @@ namespace WART
                 {
                     string response = string.Empty;
                     this.password = WhatsAppApi.Register.WhatsRegisterV2.RegisterCode(pn.CC, pn.Number, this.code, out response, null, this.password);
+                    
+                    //return raw
+                    if (this.raw)
+                    {
+                        Console.WriteLine(response);
+                        return;
+                    }
+
                     if (String.IsNullOrEmpty(this.password))
                     {
                         Console.WriteLine("Code not accepted");
@@ -313,7 +321,16 @@ namespace WART
                 string response = string.Empty;
                 if (ch.CheckFormat(pn.CC, pn.Number, out country))
                 {
-                    if (WhatsAppApi.Register.WhatsRegisterV2.RequestCode(pn.CC, pn.Number, out this.password, out response, this.method, null, pn.ISO639, pn.ISO3166, pn.MCC, this.password))
+                    bool result = WhatsAppApi.Register.WhatsRegisterV2.RequestCode(pn.CC, pn.Number, out this.password, out response, this.method, null, pn.ISO639, pn.ISO3166, pn.MCC, this.password);
+                    
+                    //return raw
+                    if (this.raw)
+                    {
+                        Console.WriteLine(response);
+                        return;
+                    }
+
+                    if (result)
                     {
                         if (!string.IsNullOrEmpty(this.password))
                         {
@@ -350,7 +367,10 @@ namespace WART
             {
                 WhatsAppApi.Parser.PhoneNumber pn = new WhatsAppApi.Parser.PhoneNumber(this.number);
                 this.identity = WhatsAppApi.Register.WhatsRegisterV2.GenerateIdentity(pn.Number, this.password);
-                Console.WriteLine("Identity:");
+                if (!this.raw)
+                {
+                    Console.WriteLine("Identity:");
+                }
                 Console.WriteLine(identity);
             }
             catch (Exception e)
