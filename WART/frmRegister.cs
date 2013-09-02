@@ -13,15 +13,15 @@ namespace WART
 {
     public partial class frmRegister : Form
     {
-        protected string identity;
-        protected string number;
-        protected string cc;
-        protected string phone;
-        protected string password;
-        protected string language;
-        protected string locale;
-        protected string mcc;
-        protected string code;
+        protected string identity = string.Empty;
+        protected string number = string.Empty;
+        protected string cc = string.Empty;
+        protected string phone = string.Empty;
+        protected string password = string.Empty;
+        protected string language = string.Empty;
+        protected string locale = string.Empty;
+        protected string mcc = string.Empty;
+        protected string code = string.Empty;
         protected bool raw = false;
         public  string method = "sms";
         protected ToolTip tt;
