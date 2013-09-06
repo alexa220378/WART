@@ -5,7 +5,9 @@ WhatsApp Registration Tool
 
 ![WART](https://f.cloud.github.com/assets/1610953/1016583/bfb519ec-0bfd-11e3-8c42-3b44f0014e90.png)
 
-Uses WhatsApiNet library https://github.com/shirioko/WhatsAPINet
+Uses token generator created by our lord and saviour [Jake](https://github.com/dynogic)
+
+Uses [WhatsApiNet](https://github.com/shirioko/WhatsAPINet) fork by me
 
 Requires .NET Framework 4 or Mono Framework
 
