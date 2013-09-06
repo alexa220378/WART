@@ -111,8 +111,16 @@ namespace WART
                 }
                 else
                 {
-                    string msg = string.Format("Could not request verification code\r\n{0}", response);
-                    this.Notify(msg);
+                    if (response == "iplimit")
+                    {
+                        //daily ip limit reached
+                        MessageBox.Show("Oops! You've reached your daily limit of 10 unique phone numbers.\r\nTry again tomorrow or email me at shirioko@gmail.com to add you to the whitelist :)");
+                    }
+                    else
+                    {
+                        string msg = string.Format("Could not request verification code\r\n{0}", response);
+                        this.Notify(msg);
+                    }
                 }
             }
         }
