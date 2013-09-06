@@ -353,8 +353,15 @@ namespace WART
                     }
                     else
                     {
-                        Console.WriteLine("Error:");
-                        Console.WriteLine(response);
+                        if (response == "iplimit")
+                        {
+                            Console.WriteLine("Daily 10 unique phone number limit reached.\r\nTry again tomorrow or email me at shirioko@gmail.com to add you to my whitelist");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error:");
+                            Console.WriteLine(response);
+                        }
                     }
                 }
                 else
