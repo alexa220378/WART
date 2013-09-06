@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using WART.AppCode;
@@ -253,6 +254,12 @@ namespace WART
         private void CliPrintHelp()
         {
             //print help
+            Console.WriteLine();
+            Console.WriteLine(String.Format("WART {0} - https://github.com/shirioko/WART", Assembly.GetExecutingAssembly().GetName().Version));
+            Console.WriteLine("Created by:");
+            Console.WriteLine("\tDynogic  - https://github.com/dynogic");
+            Console.WriteLine("\tshirioko - https://github.com/shirioko");
+            Console.WriteLine();
             Console.WriteLine("Usage: WART.exe [method] [args (key=value)]");
             Console.WriteLine();
             Console.WriteLine("Methods:");
@@ -355,7 +362,8 @@ namespace WART
                     {
                         if (response == "iplimit")
                         {
-                            Console.WriteLine("Daily 10 unique phone number limit reached.\r\nTry again tomorrow or email me at shirioko@gmail.com to add you to my whitelist");
+                            Console.WriteLine("Daily 10 unique phone number limit reached.");
+                            Console.WriteLine("Try again tomorrow or email me at shirioko@gmail.com to add you to my whitelist");
                         }
                         else
                         {
