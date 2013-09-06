@@ -124,6 +124,10 @@ namespace WART
                     }
                 }
             }
+            else
+            {
+                this.Notify("Please enter a phone number");
+            }
         }
 
         private void btnRegisterCode_Click(object sender, EventArgs e)
